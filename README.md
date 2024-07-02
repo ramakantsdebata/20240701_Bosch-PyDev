@@ -6,7 +6,8 @@
 * [PEPs](https://peps.python.org/)
 * [Style Guide for Python](https://peps.python.org/pep-0008/)
 * [Zen of Python](https://peps.python.org/pep-0020/)
-
+* [Lexical Analysis](https://docs.python.org/3/reference/lexical_analysis.html)
+* [Format Specifier](https://docs.python.org/3/library/string.html#formatspec)
 
 ### Contact Details
 ramakant.s.debata@gmail.com
