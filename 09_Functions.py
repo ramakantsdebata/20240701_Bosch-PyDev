@@ -1,4 +1,4 @@
-# Define Higher vs. Define Earlier
+# Define Higher vs. Define Earlier #################################################
 '''
 def Bar():
     print("Bar")
@@ -24,7 +24,7 @@ def Baz():
 print("All Done")
 '''
 
-# Doc String
+# Doc String ###################################################################
 
 def SomeMethod(arg1, arg2):
     '''
@@ -38,7 +38,7 @@ def SomeMethod(arg1, arg2):
 # print(SomeMethod.__doc__)
 
 
-# Return 
+# Return ######################################################################
 
 def Method():
     x = 10
@@ -52,7 +52,7 @@ def Method():
 # print(Method())
 
 
-## Arguments to a Function
+## Arguments to a Function ###################################################
 
 def add(a, b, c=0):
     print(f"a --> {a}, b --> {b}, c --> {c}")
@@ -61,8 +61,10 @@ def add(a, b, c=0):
 print(add(1, 2))        ## Positional argument
 print(add(2, 1))
 
-print(add(a = 1, b = 2))        ## Named argument
+print(add(a = 1, b = 2))        ## Named argument / Key-worded args
 print(add(b = 2, a = 1))
 
 print(add(1, 2))                ## Default args
 print(add(1, 2, 3))
+
+#----- Variable, Keyworded Variable args ----------------------------------
