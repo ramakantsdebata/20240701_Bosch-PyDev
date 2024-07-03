@@ -11,6 +11,9 @@ def Test1():
     lst1 = [1, 2, 3, "Ramakant", "Manish", "Abhijeet", add]
     print(lst1)
     print(lst1[6](3, 4))
+    print("Ramakant" in lst1)
+    for x in lst1:
+        print(x, type(x))
 
 '''
 int add(intx, int y)
@@ -110,9 +113,77 @@ def Test6():
 
     print(st2.union(st3))
     print(st2 | st3)
+
+def add(x, y, z):
+    return x + y + z
     
+# Sequence (Un)packing 
+def Test7():
+    lst = [1, 2, 3, 4, 5, 6]
+    extras = []
+    a, b, c, *extras = lst
+    print(a, b, c, extras, sep='\n')
+
+    print(add(extras[0], extras[1], extras[2]))
+    print(add(*extras))
+
+    print("Done")
 
 
-# Sequence unpacking 
+## Dictionaries
+def Test8():
+    dt1 = {
+        '1': "Python", 
+        '2' : "Containers"
+        }
+    dt2 = dict({'A':10, 'B':20})
+    print(dt1)
+    print(dt2)
 
-Test6()
+    st = {1, 2, 3, 4}
+    dt3 = dict.fromkeys(st)
+    print(dt3)
+
+    fs1 = frozenset([1, 2, 3])
+    tp = (1, 2, 3)
+    print(type(fs1), hash(fs1))
+    st2 = set([1, 2, 3, 4, 5, 1, 4, 5, fs1, tp])
+    dt4 = dict.fromkeys(st2)
+
+    print(dt4)
+
+    for k in dt4.keys():
+        print(k)
+        
+    for v in dt4.values():
+        print(v)
+
+    for k, v in dt4.items():
+        print(f"{k} --> {v}")        
+
+    print(dt2['A'])
+    dt2['A'] = 100
+    print(dt2['A'])
+
+    dt2['C'] = 300
+    print(dt2)
+
+    if 'd' in dt2:
+        print(dt2['D'])
+    else:
+        print("No such key")
+
+    print("Value -->", dt2.get('C'))
+    print("Value -->", dt2.get('D'))
+
+    print("\n", '-'*40, '\n')
+    dt2.update(dt4)
+    print(dt2)
+
+    print(dt2.pop('B'))
+    print(dt2)
+
+    print(dt2.popitem())
+    print(dt2)
+
+Test8()
