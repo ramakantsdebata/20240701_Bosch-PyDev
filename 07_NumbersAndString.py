@@ -85,4 +85,55 @@ def Test6():
     print(str1[-5:], str1[:5])
     print(str1[-5:5:-1])
 
-Test6()
+def Test7():
+    st1 = "ABCDEFGHI"
+    print(st1[-1:5])
+    print(st1[-1:], st1[:5], sep='')
+
+def Test8():
+    r1 = [1, 2, 3]
+    r2 = [4, 5, 6]
+    r3 = [7, 8, 9]
+    mat = [r1, r2, r3]
+    print(mat)
+
+    # mat[1][2]
+    row = mat[1]
+    elem = row[2]
+    print(elem)
+
+    print(mat[1][2])
+
+    mat[1][2] = 60
+
+    for row in mat:
+        for elem in row:
+            print(elem, end=' ')
+        print()
+
+# Mutable class to hold an integer
+class Integer:
+    def __init__(self, value) -> None:
+        self.val = int(value)
+
+    def __str__(self) -> str:
+        return str(self.val)
+    
+    def setVal(self, value):
+        self.val = value
+
+def Test9():
+    r1 = (Integer(1), Integer(2), Integer(3))
+    r2 = (Integer(4), Integer(5), Integer(6))
+    r3 = (Integer(7), Integer(8), Integer(9))
+    mat = (r1, r2, r3)
+    print(mat[1][2])
+    mat[1][2].setVal(60)
+
+    for row in mat:
+        for elem in row:
+            print(elem, end=' ')
+        print()
+
+
+Test9()

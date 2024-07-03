@@ -214,6 +214,7 @@ def Test9():
     p1 = Point(10, 20)
     print(p1.x, p1.y)
 
+# Comprehensions
 def Test10():
     fruits = ['apple', 'banana', 'coconut', 'dragonfuit', 'elderberry', 'fig', 'guava','jackfruit', 'mango']
 
@@ -248,5 +249,14 @@ def Test11():
     print(f"{type(st)} --> {st}")
     print(f"{type(dt)} --> {dt}")
 
+def Test12():
+    print(dir(str))
+    # x = 10
+    # print(dir(x))
 
-Test11()
+    pubAttribs = [ attrib   for attrib in dir(str)    if attrib.startswith('_') is False]
+    # add the condition that the attrib is callable --> __call__ is overridden
+    print(pubAttribs)
+
+
+Test12()
