@@ -186,4 +186,67 @@ def Test8():
     print(dt2.popitem())
     print(dt2)
 
-Test8()
+# Tuple - Like a list in almost all manner; Immutable
+# Ordered, Can contain (im)mutables, Sliced, Indexed
+def Test9():
+    tp1 = tuple([1, 2, 3])
+    tp2 = (1, 2, 3, 4)
+    print(tp2[2])
+
+    str1 = "This is a Python training in Pune for Engineers"
+    lst = str1.split()
+    print(lst)
+
+    # Named tuples
+    # [roll:int, name:str, age: int, GPA: int]
+    lstStud = [1, 'Pravin', 17, 4]
+
+    from collections import namedtuple
+    Student = namedtuple('StudentCls', 'roll name age gpa')
+    s1 = Student(1, "Abhijeet", 14, 4.2)
+    s2 = Student(2, "Manish", 12, 4.3)
+
+    print(f"Name --> {s1[1]}")
+    print(f"Name --> {s1.name}")
+    print(type(s1))
+
+    Point = namedtuple('Point', ['x', 'y'])
+    p1 = Point(10, 20)
+    print(p1.x, p1.y)
+
+def Test10():
+    fruits = ['apple', 'banana', 'coconut', 'dragonfuit', 'elderberry', 'fig', 'guava','jackfruit', 'mango']
+
+    '''
+    newlist = []
+    for fr in fruits:
+        if 'a' in fr:
+            newlist.append(fr)
+    '''
+    newlist = [    fr       for fr in fruits        if 'a' in fr    ]
+    print(newlist)
+
+    lst = [    fr                           for fr in fruits        if 'a' in fr    ]
+    tp  = tuple(    fr                      for fr in fruits        if 'a' in fr    )
+    st  = {    fr                           for fr in fruits        if 'a' in fr    }
+    dt  = {    fr : fr.capitalize()         for fr in fruits        if 'a' in fr    }
+    gn  = (    fr                           for fr in fruits        if 'a' in fr    )
+
+    print(f"{type(lst)} --> {lst}")
+    print(f"{type(tp)} --> {tp}")
+    print(f"{type(st)} --> {st}")
+    print(f"{type(dt)} --> {dt}")
+    print(f"{type(gn)} --> {gn}")
+
+def Test11():
+    lst = [1]
+    tp = (1,)
+    st = {1}
+    dt = {1:1}
+    print(f"{type(lst)} --> {lst}")
+    print(f"{type(tp)} --> {tp}")
+    print(f"{type(st)} --> {st}")
+    print(f"{type(dt)} --> {dt}")
+
+
+Test11()
