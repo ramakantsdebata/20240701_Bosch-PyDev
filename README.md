@@ -8,6 +8,10 @@
 * [Zen of Python](https://peps.python.org/pep-0020/)
 * [Lexical Analysis](https://docs.python.org/3/reference/lexical_analysis.html)
 * [Format Specifier](https://docs.python.org/3/library/string.html#formatspec)
+* [Exception Handling](https://docs.python.org/3/library/exceptions.html)
+* [Exception Hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)
+* [Errors & Exceptions](https://docs.python.org/3/tutorial/errors.html#)
+
 
 ### Feedback
 * [Feedback](https://forms.gle/QBBncpPmaGQWunZV7)
