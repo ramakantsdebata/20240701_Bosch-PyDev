@@ -5,6 +5,9 @@ class Integer:
 
     def __str__(self) -> str:
         return f"[Integer -> {str(self.__val)}]"
+    
+    def __add__(self, other):
+        return Integer(self.__val + other.__val)
 
     @property
     def value(self):
