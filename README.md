@@ -17,5 +17,5 @@
 * [Feedback](https://forms.gle/QBBncpPmaGQWunZV7)
 
 ### Contact Details
-ramakant.s.debata@gmail.com
-+91-9923516767
+* ramakant.s.debata@gmail.com
+* +91-9923516767
