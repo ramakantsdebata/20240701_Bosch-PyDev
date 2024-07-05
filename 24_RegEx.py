@@ -10,7 +10,8 @@ import re
 2. Meta characters
 3. Special seqences
 4. Extensions notations
-    * comment
+    * Comment
+    * Named pattern
     * positive lookahead
     * negative lookahead
     * positive lookbehind
@@ -23,8 +24,10 @@ string1 = "The Euro STOXX 600 index, which tracks all stock markets across Europ
     of STOXX 600 shares since its all-time peak on 19 February."
 
 string1 = "The Euro STOXX 600 index, which tracks all stock markets across Europe including the FTSE, fell by 11.48% - the worst day since it launched in 1998. The panic selling prompted by the coronavirus has wiped £2.7tn off the value of STOXX 600 shares since its all-time peak on 19 February."
+string2 = "The Euro STOXX 600 index, which tracks all stock markets across Europe including the FTSE, fell by 11.48% - \nthe worst day since it launched in 1998. \nThe panic selling prompted by the coronavirus has wiped £2.7tn off \nthe value of STOXX 600 shares since its all-time peak on 19 February."
 
-def UsingModules():
+
+def usingModules():
     path = r"c:\Users\temp\newfile.txt"     # raw string
     print(path)
 
@@ -127,8 +130,102 @@ def usingFlags():
                     ''', string1, re.X)
     print(res.groups())
 
+def usingMetaCharacters():
+    # '.' - Matches any character but the newline, unless re.S / re.DOTALL is provided as a flag
+    res = re.search(r'(.+)', string2)
+    print(res)
+    print(res.groups())
+    if string2 == res.group(1):
+        print("There are no newlines")
+    else:
+        print("Newlines present")
+
+    # ^ - Matches at the beginning of each line
+    res = re.findall(r'^\w{3}', string2, re.M)
+    print(res)
+
+    # $ - Matches at the end of each line
+    res = re.findall(r'\s\w{2,}\W*$', string2, re.M)
+    print(res)
+
+    # \A - Matches at the beginning of the entire string
+    res = re.findall(r'\A\w{3}', string2, re.M)
+    print(res)
+
+    # \Z - Matches at the end of the entire string
+    res = re.findall(r'\s\w{2,}\W*\Z', string2, re.M)
+    print(res)
+
+    # * - zero or more occurances of the preceeding pattern,
+    #     in a manner that it attempts to capture as much as possible
+    #     Hence, also known as having a GREEDY behaviour
+
+    res = re.search(r'(.*)\s', string1)
+    print(res)
+    print(string1[:res.end(1)])
+
+    # + - one or more occurances of the preceeding pattern,
+    #     in a manner that it attempts to capture as much as possible
+    #     Hence, also known as having a GREEDY behaviour
+
+    res = re.search(r'(.+)\s', string1)
+    print(res)
+    print(string1[:res.end(1)])
+
+    # ? - zero or one occurance of the preceeding pattern,
+    #     in a manner that it attempts to capture as much as possible
+    #     Hence, also known as having a GREEDY behaviour
+
+    res = re.search(r'(.?)\s', string1)
+    print(res)
+    print(string1[:res.end(1)])
+
+
+    print("-"*40)
+    ## NON-Greedy Behaviour - Enforced by the '?'
+    res1 = re.search(r'(.*?)\s', string1)
+    res2 = re.search(r'(.+?)\s', string1)
+    res3 = re.search(r'(.??)\s', string1)
+
+    print(string1[:res1.end(1)])
+    print(string1[:res2.end(1)])
+    print(string1[res3.start(1):res3.end(1)])
+
+    res1 = re.search(r'(.{2,})\s', string1)
+
+def usingSpecialSeq():
+    # \ - one of two meanings 
+    #       1. Special sequence - \d, \w, \W, \A, \Z
+    #       2. Escape the special meaning of metacharacters - \.   \[  \] \( \)
+
+    # \A (Start of the string, not line), \Z (End of the string, not line)
+
+    # \d - Matches any digit, \D - Matches any non-digit
+    # \w - Matches any alphanumeric, \W - Matches any non-alphanumeric
+    # \b - Matches non-alphanumeric characters before/after an alphanumeric character (Word Boundary)
+    # \B - Anything but a word boundary
+
+    res = re.findall(r'E\w*?\s', string1)
+    print(res)
+
+    res = re.findall(r'\bcross\s', string1)
+    print(res)
+
+    # \s -  Whitespace ( \t\n\r\f\v) - space, tab, newline, return-carriage, formfeed, vertical-tab
+    # \S - Anything but a whitespace
+
+    # Character case - [A-Z], [A-Za-z0-9], [aeiou]
+    res = re.findall(r'[aeiou]', string1)
+    print(res)
+    st = set(res)
+    print("All Vowels in place?", True if len(st) == 5 else False)
+
+    dt = { alpha : res.count(alpha)  for alpha in "aeiou"}
+    print(dt)
 
 if __name__ == '__main__':
-    # UsingModules()
+    # usingModules()
     # usingGroups()
-    usingFlags()
+    # usingFlags()
+    # usingMetaCharacters()
+    usingSpecialSeq()
