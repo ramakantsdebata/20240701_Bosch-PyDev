@@ -165,3 +165,7 @@ cython_debug/
 # Transisent output files
 **/updated_data.xml
 **/updated_data.json
+
+# IDE configs
+**/.idea/
+**/.vscode

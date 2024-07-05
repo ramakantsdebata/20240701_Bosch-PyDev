@@ -1,4 +1,5 @@
 import unittest
+from parameterized import parameterized, parameterized_class
 
 import sys
 sys.path.insert(0, '..\\')
@@ -26,16 +27,28 @@ class TestSimpleCalculator(unittest.TestCase):
         print("In tearDownClass...")
         del cls.calc
 
-    @parameterized([
-
-    ])
     def test_simpleAdd(self):
 
         self.assertEqual(11, self.calc.add())  # add assertion here
 
+    @parameterized.expand([
+        (5, 3, 2),
+        (7, 4, 3),
+        (25, 17, 8)
+    ])
+    def test_simpleAdd_Parameterised(self, exp_res, first, second):
+        self.calc.a = first
+        self.calc.b = second
+        self.assertEqual(exp_res, self.calc.add())  # add assertion here
+
     def test_simpleSub(self):
         self.assertEqual(3, self.calc.sub())  # add assertion here
 
+    def test_simpleAdd2(self):
+        self.assertEqual(3, self.calc.add2(1, 1))  # add assertion here
+
+    # Skipping  test - Can also skip a class of test this way
+    @unittest.skip
     def test_simpleAdd2(self):
         self.assertEqual(3, self.calc.add2(1, 1))  # add assertion here
 
